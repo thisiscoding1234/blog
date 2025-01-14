@@ -1,0 +1,111 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+---
+
+<Layout title={post.data.title}>
+  <article class="blog-post">
+    <header>
+      <h1>{post.data.title}</h1>
+      <div class="post-meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </time>
+        <span class="author">by {post.data.author}</span>
+      </div>
+      {post.data.tags.length > 0 && (
+        <div class="tags">
+          {post.data.tags.map(tag => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+      )}
+    </header>
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .blog-post {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  .post-meta {
+    color: var(--text);
+    opacity: 0.8;
+    margin: 0.5rem 0;
+  }
+
+  .author {
+    margin-left: 1rem;
+  }
+
+  .tags {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: var(--secondary);
+    color: var(--text);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .content {
+    line-height: 1.7;
+  }
+
+  .content :global(h2) {
+    margin: 2rem 0 1rem;
+  }
+
+  .content :global(h3) {
+    margin: 1.5rem 0 1rem;
+  }
+
+  .content :global(code) {
+    background: var(--secondary);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+
+  .content :global(pre) {
+    background: var(--secondary);
+    padding: 1rem;
+    border-radius: 4px;
+    overflow-x: auto;
+  }
+
+  .content :global(pre code) {
+    background: none;
+    padding: 0;
+  }
+</style>
