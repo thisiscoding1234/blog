@@ -17,6 +17,9 @@ const { Content } = await post.render();
 
 <Layout title={post.data.title}>
   <article class="blog-post">
+    <div style={`background-image: ${post.data.grad};`} class="post-image">
+    </div>
+    <div class="backied">
     <header>
       <h1>{post.data.title}</h1>
       <div class="post-meta">
@@ -40,6 +43,7 @@ const { Content } = await post.render();
     <div class="content">
       <Content />
     </div>
+  </div>
   </article>
 </Layout>
 
@@ -51,6 +55,8 @@ const { Content } = await post.render();
 
   header {
     margin-bottom: 2rem;
+    background-color: var(--background);
+    margin-top: 2rem;
   }
 
   .post-meta {
@@ -107,5 +113,25 @@ const { Content } = await post.render();
   .content :global(pre code) {
     background: none;
     padding: 0;
+  }
+
+  .post-image {
+    top: 8%;
+		width: 75%;
+		overflow: hidden;
+    height: 50%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+    border-radius: 25px;
+    z-index: -9999999;
+    position: absolute;
+    margin-left: 12.5%;
+    left:0;
+	}
+
+  .backied{
+    background-color: var(--background);
+    padding: 2rem;
+    border-radius: 50px;
   }
 </style>
