@@ -20,7 +20,7 @@ const recentPosts = posts.slice(0, 5); // Get 5 most recent posts
 				<div class="carousel-container">
 					{recentPosts.map(post => (
 						<article class="post-card">
-							<div style={`background-image: ${post.data.type}-gradient(${post.data.dir}, ${post.data.col1}  0%, ${post.data.col2} 100%);`} class="post-image">
+							<div style={`background-image: ${post.data.grad};`} class="post-image">
 							</div>
 							<div class="post-content">
 								<h3>

@@ -3,10 +3,7 @@ title: "Getting Started with Web Development"
 description: "A beginner's guide to starting your journey in web development"
 pubDate: 2024-01-15
 author: "John Doe"
-col1: "#FF6A00"
-col2: "#FFFFFF"
-dir: ""
-type: "radial"
+grad: "radial-gradient(#FF6A00, #FFFFFF)"
 tags: ["web development", "programming", "beginners"]
 ---
 
