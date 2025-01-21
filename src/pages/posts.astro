@@ -15,7 +15,7 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
         <div style={`background-image: ${post.data.grad};`} class="post-image">
 							</div>
         <h2>
-          <a href={`/blog/${post.slug}`}>{post.data.title}</a> </h2><br>
+          <a href={`/posts/${post.slug}`}>{post.data.title}</a> </h2><br>
         </h2>
         <div class="post-meta">
           <time datetime={post.data.pubDate.toISOString()}>
