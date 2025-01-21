@@ -12,10 +12,10 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
   <div class="blog-posts">
     {posts.map(post => (
       <article class="post-card">
-        <div style={`background-image: ${post.data.grad};`} class="post-image-main">
+        <div style={`background-image: ${post.data.grad};`} class="post-image">
 							</div>
         <h2>
-          <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+          <a href={`/blog/${post.slug}`}>{post.data.title}</a> </h2><br>
         </h2>
         <div class="post-meta">
           <time datetime={post.data.pubDate.toISOString()}>
@@ -25,9 +25,9 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
               day: 'numeric'
             })}
           </time>
-          <span class="author">by {post.data.author}</span>
+          <span class="author-list">by {post.data.author}</span>
         </div>
-        <p class="description">{post.data.description}</p>
+        <p class="description-list">{post.data.description}</p>
         <div class="tags">
           {post.data.tags.map(tag => (
             <span class="tag">{tag}</span>

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import "../styles/main.css";
 
 const posts = await getCollection('blog');
 posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -19,14 +20,14 @@ const recentPosts = posts.slice(0, 5); // Get 5 most recent posts
 			<div class="carousel">
 				<div class="carousel-container">
 					{recentPosts.map(post => (
-						<article class="post-card">
-							<div style={`background-image: ${post.data.grad};`} class="post-image">
+						<article class="post-home">
+							<div style={`background-image: ${post.data.grad};`} class="post-image-home">
 							</div>
-							<div class="post-content">
+							<div class="post-contenth">
 								<h3>
 									<a href={`/blog/${post.slug}`}>{post.data.title}</a>
 								</h3>
-								<div class="post-meta">
+								<div class="post-metah">
 									<time datetime={post.data.pubDate.toISOString()}>
 										{post.data.pubDate.toLocaleDateString('en-UK', 
 										{year: 'numeric',
@@ -53,7 +54,7 @@ const recentPosts = posts.slice(0, 5); // Get 5 most recent posts
 
 <script>
 	const carousel = document.querySelector('.carousel-container');
-	const cards = document.querySelectorAll('.post-card');
+	const cards = document.querySelectorAll('.post-home');
 	const prevButton = document.querySelector('.prev');
 	const nextButton = document.querySelector('.next');
 	let currentIndex = 0;
