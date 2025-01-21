@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+import "../styles/main.css"
 ---
 
 <!doctype html>
@@ -17,15 +18,16 @@ const { title } = Astro.props;
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Raleway:wght@500;600;700&display=swap" rel="stylesheet">
+		 
 		<title>{title}</title>
 	</head>
 	<body>
 		<nav>
 			<div class="nav-content">
-				<a href="/" class="site-title">My Blog</a>
+				<a href="../" class="site-title">Go Home</a>
 				<div class="nav-links">
-					<a href="/blog">Blog</a>
-					<a href="/about">About</a>
+				<a href="./">Main Blog Page</a>
+					<a href="./posts">All Posts</a>
 				</div>
 			</div>
 		</nav>
@@ -37,106 +39,3 @@ const { title } = Astro.props;
 		</footer>
 	</body>
 </html>
-<style is:global>
-	@media (prefers-color-scheme: light) {
-		:root {
-			--text: #2c1302;
-			--background: #fef4ec;
-			--primary: #ff8e3d;
-			--secondary: #f2d5c0;
-			--accent: #0879c9;
-			--clear: rgba(255, 255, 255, 90);
-		}
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--text: #fde4d3;
-			--background: #130901;
-			--primary: #c25100;
-			--secondary: #3f220d;
-			--accent: #36a6f7;
-			--clear: rgba(0, 0, 0, 90);
-		}
-	}
-
-	html {
-		font-family: 'Outfit', sans-serif;
-		background: var(--background);
-		color: var(--text);
-	}
-
-	body {
-		margin: 0;
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-	}
-
-	main {
-		flex: 1;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		margin: 2rem auto;
-		padding: 0 1rem;
-	}
-
-	nav {
-		background: var(--secondary);
-		padding: 1rem;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
-
-	.nav-content {
-		max-width: 800px;
-		margin: 0 auto;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
-
-	.site-title {
-		font-family: 'Raleway', sans-serif;
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--text);
-		text-decoration: none;
-	}
-
-	.nav-links {
-		display: flex;
-		gap: 1.5rem;
-	}
-
-	.nav-links a {
-		color: var(--text);
-		text-decoration: none;
-		font-weight: 500;
-	}
-
-	.nav-links a:hover {
-		color: var(--primary);
-	}
-
-	footer {
-		background: var(--secondary);
-		color: var(--text);
-		text-align: center;
-		padding: 1rem;
-		margin-top: auto;
-	}
-
-	h1, h2, h3, h4, h5, h6 {
-		font-family: 'Raleway', sans-serif;
-		color: var(--primary);
-	}
-
-	a {
-		color: var(--accent);
-	}
-
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
